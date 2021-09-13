@@ -46,9 +46,9 @@ sudo sed -i "s~program:gunicorn~program:gunicorn_$project_name~g" djangowebsite.
 mv default nginx_$project_name.conf
 mv djangowebsite.conf supervisor_$project_name.conf
 
-sudo cp -f nginx_$project_name.conf /etc/nginx/sites-enabled.d
+sudo cp -f nginx_$project_name.conf /etc/nginx/sites-enabled.d/
 sudo cp -f gunicorn_config.py $project_path/$project_name
-sudo cp -f supervisor_$project_name.conf /etc/supervisord.d/conf.d
+sudo cp -f supervisor_$project_name.conf /etc/supervisord.d/
 sudo service nginx restart
 sudo service supervisord start
 sudo service supervisord restart
