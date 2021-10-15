@@ -15,7 +15,8 @@ read -p "Ваше доменное имя, без http (for example, google.com)
 read -p "Порт проекта (8001 если первый проект на сервере, 8002 если второй, итд.): " project_port
 read -p "Укажите имя проекта (латинскими буквами без проблелов): " project_name
 read -p "Укажите количество workers, это цифра равна количество ядер умноженные на 2 + 1 (прим: 1 ядро - 3 workers): " project_workers
-`$base_python_interpreter -m venv env`
+#`$base_python_interpreter -m venv env`
+python3 -m venv env
 source env/bin/activate
 pip install -U pip
 pip install django
