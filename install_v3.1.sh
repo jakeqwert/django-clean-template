@@ -1,5 +1,5 @@
 #!/bin/bash
-# Debian, Ubuntu
+# CentOS, Red Hat
 base_python_interpreter=""
 project_name=""
 project_domain=""
@@ -47,13 +47,13 @@ sudo sed -i "s~program:gunicorn~program:gunicorn_$project_name~g" djangowebsite.
 mv default nginx_$project_name.conf
 mv djangowebsite.conf supervisor_$project_name.conf
 
-sudo cp -f nginx_$project_name.conf /etc/nginx/sites-available
-sudo ln -s /etc/nginx/sites-available/nginx_$project_name.conf /etc/nginx/sites-enabled/nginx_$project_name.conf
+sudo cp -f nginx_$project_name.conf /etc/nginx/conf.d
+#sudo ln -s /etc/nginx/sites-available/nginx_$project_name.conf /etc/nginx/sites-enabled/nginx_$project_name.conf
 
 # sudo cp -f gunicorn_config.py $project_path/$project_name
 sudo mv -f gunicorn_config.py $project_path/$project_name
 
-sudo cp -f supervisor_$project_name.conf /etc/supervisor/conf.d
+sudo cp -f supervisor_$project_name.conf /etc/supervisord.d
 
 sudo service nginx restart
 sudo service supervisor start
