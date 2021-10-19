@@ -48,7 +48,10 @@ sudo sed -i "s~dbms_template_user~$user_linux~g" djangowebsite.conf
 sudo sed -i "s~program:gunicorn~program:gunicorn_$project_name~g" djangowebsite.conf
 
 mv default nginx_$project_name.conf
-mv djangowebsite.conf supervisor_$project_name.conf
+# в CentOS 7
+# /etc/supervisord.d/*.ini
+#
+mv djangowebsite.conf supervisor_$project_name.ini
 
 sudo cp -f nginx_$project_name.conf /etc/nginx/conf.d
 #sudo ln -s /etc/nginx/sites-available/nginx_$project_name.conf /etc/nginx/sites-enabled/nginx_$project_name.conf
@@ -56,8 +59,8 @@ sudo cp -f nginx_$project_name.conf /etc/nginx/conf.d
 # sudo cp -f gunicorn_config.py $project_path/$project_name
 sudo mv -f gunicorn_config.py $project_path/$project_name
 
-sudo cp -f supervisor_$project_name.conf /etc/supervisord.d
+sudo cp -f supervisor_$project_name.ini /etc/supervisord.d
 
 sudo service nginx restart
-sudo service supervisor start
-sudo service supervisor restart
+sudo service supervisord start
+sudo service supervisord restart
