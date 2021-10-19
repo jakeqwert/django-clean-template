@@ -17,6 +17,8 @@ read -p "Укажите имя проекта (латинскими буквам
 read -p "Укажите количество workers, это цифра равна количество ядер умноженные на 2 + 1 (прим: 1 ядро - 3 workers): " project_workers
 #`$base_python_interpreter -m venv env`
 python3 -m venv env
+#!!!!!
+#python3 -m virtualenv env
 source env/bin/activate
 pip install -U pip
 pip install django
